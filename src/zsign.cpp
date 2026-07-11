@@ -280,7 +280,8 @@ int main(int argc, char* argv[])
 	//sign
 	atimer.Reset();
 	ZBundle bundle;
-	bool bRet = bundle.SignFolder(&zsa, strFolder, strBundleId, strBundleVersion, strDisplayName, arrDylibFiles, bForce, bWeakInject, bEnableCache);
+	// 9th arg embeds embedded.mobileprovision (param name is inverted: true = include profile).
+	bool bRet = bundle.SignFolder(&zsa, strFolder, strBundleId, strBundleVersion, strDisplayName, arrDylibFiles, bForce, bWeakInject, bEnableCache, true);
 	atimer.PrintResult(bRet, ">>> Signed %s!", bRet ? "OK" : "Failed");
 
 	//archive
